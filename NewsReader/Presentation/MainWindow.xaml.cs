@@ -144,7 +144,14 @@ namespace NewsReader
         private async void NewsgroupsListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             if (NewsgroupsListBox.SelectedItem is string selectedNewsgroup)
+
             {
+                // Clear the current article headers and content before loading new ones. Added post hand-in
+                HeadlinesListBox.ItemsSource = null;
+                articleHeaders.Clear();
+                articleNumbers.Clear();
+                ArticleContentTextBox.Clear();
+
                 await LoadArticleHeaders(selectedNewsgroup);
             }
         }
